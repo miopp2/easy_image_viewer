@@ -114,7 +114,8 @@ Future<Dialog?> showImageViewerPagerWithDelete(
     bool infinitelyScrollable = false,
     Color backgroundColor = _defaultBackgroundColor,
     String closeButtonTooltip = _defaultCloseButtonTooltip,
-    Color closeButtonColor = _defaultCloseButtonColor}) {
+    Color closeButtonColor = _defaultCloseButtonColor,
+    VoidCallback? onDelete}) {
   if (immersive) {
     // Hide top and bottom bars
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
@@ -134,8 +135,6 @@ Future<Dialog?> showImageViewerPagerWithDelete(
             infinitelyScrollable: infinitelyScrollable,
             backgroundColor: backgroundColor,
             closeButtonColor: closeButtonColor,
-            closeButtonTooltip: closeButtonTooltip, onDelete: () {
-          print("Delete");
-        });
+            closeButtonTooltip: closeButtonTooltip, onDelete: onDelete);
       });
 }

@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     MultiImageProvider(_imageProviders);
                 showImageViewerPagerWithDelete(context, multiImageProvider,
                     swipeDismissible: true, doubleTapZoomable: true,
-                    infinitelyScrollable: true);
+                    infinitelyScrollable: true, onDelete: () {print("Delete");});
               }),
           ElevatedButton(
               child: const Text("Show Multiple Images (Custom)"),
