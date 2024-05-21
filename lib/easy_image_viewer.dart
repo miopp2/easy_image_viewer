@@ -2,6 +2,7 @@
 /// It supports pinch & zoom, and paging through multiple images.
 library easy_image_viewer;
 
+import 'package:easy_image_viewer/src/dismissible_dialog_with_delete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -99,5 +100,42 @@ Future<Dialog?> showImageViewerPager(
             backgroundColor: backgroundColor,
             closeButtonColor: closeButtonColor,
             closeButtonTooltip: closeButtonTooltip);
+      });
+}
+
+Future<Dialog?> showImageViewerPagerWithDelete(
+    BuildContext context, EasyImageProvider imageProvider,
+    {bool immersive = true,
+    void Function(int)? onPageChanged,
+    void Function(int)? onViewerDismissed,
+    bool useSafeArea = false,
+    bool swipeDismissible = false,
+    bool doubleTapZoomable = false,
+    bool infinitelyScrollable = false,
+    Color backgroundColor = _defaultBackgroundColor,
+    String closeButtonTooltip = _defaultCloseButtonTooltip,
+    Color closeButtonColor = _defaultCloseButtonColor}) {
+  if (immersive) {
+    // Hide top and bottom bars
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  }
+
+  return showDialog<Dialog>(
+      context: context,
+      useSafeArea: useSafeArea,
+      builder: (context) {
+        return DismissibleDialogWithDelete(imageProvider,
+            immersive: immersive,
+            onPageChanged: onPageChanged,
+            onViewerDismissed: onViewerDismissed,
+            useSafeArea: useSafeArea,
+            swipeDismissible: swipeDismissible,
+            doubleTapZoomable: doubleTapZoomable,
+            infinitelyScrollable: infinitelyScrollable,
+            backgroundColor: backgroundColor,
+            closeButtonColor: closeButtonColor,
+            closeButtonTooltip: closeButtonTooltip, onDelete: () {
+          print("Delete");
+        });
       });
 }

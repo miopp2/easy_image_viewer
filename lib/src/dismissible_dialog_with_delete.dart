@@ -64,7 +64,7 @@ class _DismissibleDialogWithDeleteState
           top: 5,
           left: 5,
           child: IconButton(
-            icon: const Icon(Icons.delete),
+            icon: Icon(Icons.delete, color: Theme.of(context).colorScheme.primary),
             onPressed: () => widget.onDelete,
           ),
         ),

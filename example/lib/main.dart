@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 MultiImageProvider multiImageProvider =
                     MultiImageProvider(_imageProviders);
-                showImageViewerPager(context, multiImageProvider,
+                showImageViewerPagerWithDelete(context, multiImageProvider,
                     swipeDismissible: true, doubleTapZoomable: true,
                     infinitelyScrollable: true);
               }),
