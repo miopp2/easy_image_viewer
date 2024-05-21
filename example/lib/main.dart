@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'EasyImageViewer Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.green),
+        progressIndicatorTheme:
+            const ProgressIndicatorThemeData(color: Colors.green),
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'EasyImageViewer Demo'),
@@ -76,13 +77,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     swipeDismissible: true, doubleTapZoomable: true);
               }),
           ElevatedButton(
-              child: const Text("Show Multiple Images (Simple) with Infinite Scroll"),
+              child: const Text(
+                  "Show Multiple Images (Simple) with Infinite Scroll"),
               onPressed: () {
                 MultiImageProvider multiImageProvider =
                     MultiImageProvider(_imageProviders);
-                showImageViewerPagerWithDelete(context, multiImageProvider,
-                    swipeDismissible: true, doubleTapZoomable: true,
-                    infinitelyScrollable: true, onDelete: () {print("Delete");});
+                showImageViewerPagerWithDelete(
+                  context,
+                  multiImageProvider,
+                  swipeDismissible: true,
+                  doubleTapZoomable: true,
+                  infinitelyScrollable: true,
+                  onDelete: () {
+                    print("Delete");
+                  },
+                );
               }),
           ElevatedButton(
               child: const Text("Show Multiple Images (Custom)"),
@@ -107,19 +116,21 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const AsyncDemoPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const AsyncDemoPage()),
                 );
               }),
           ElevatedButton(
               child: const Text("Custom Progress Indicator"),
               onPressed: () {
-                CustomImageWidgetProvider customImageProvider = CustomImageWidgetProvider(
-                    imageUrls: [
-                      "https://picsum.photos/id/1001/4912/3264",
-                      "https://picsum.photos/id/1003/1181/1772",
-                      "https://picsum.photos/id/1004/4912/3264",
-                      "https://picsum.photos/id/1005/4912/3264"
-                    ].toList(),
+                CustomImageWidgetProvider customImageProvider =
+                    CustomImageWidgetProvider(
+                  imageUrls: [
+                    "https://picsum.photos/id/1001/4912/3264",
+                    "https://picsum.photos/id/1003/1181/1772",
+                    "https://picsum.photos/id/1004/4912/3264",
+                    "https://picsum.photos/id/1005/4912/3264"
+                  ].toList(),
                 );
                 showImageViewerPager(context, customImageProvider);
               }),
@@ -135,12 +146,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     swipeDismissible: true,
                     doubleTapZoomable: true);
               }),
-          SizedBox( // Tiny image just to test the EasyImageView constructor
-            width: MediaQuery.of(context).size.width,
-            height: 56,
-            child: EasyImageView(
-                imageProvider: Image.network("https://picsum.photos/id/1001/4912/3264").image)
-          ),
+          SizedBox(
+              // Tiny image just to test the EasyImageView constructor
+              width: MediaQuery.of(context).size.width,
+              height: 56,
+              child: EasyImageView(
+                  imageProvider:
+                      Image.network("https://picsum.photos/id/1001/4912/3264")
+                          .image)),
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 2.4,
@@ -209,7 +222,8 @@ class CustomImageWidgetProvider extends EasyImageProvider {
   }
 
   @override
-  Widget progressIndicatorWidgetBuilder(BuildContext context, int index, {double? value}) {
+  Widget progressIndicatorWidgetBuilder(BuildContext context, int index,
+      {double? value}) {
     // Create a custom linear progress indicator
     // with a label showing the progress value
     return Column(

@@ -125,16 +125,19 @@ Future<Dialog?> showImageViewerPagerWithDelete(
       context: context,
       useSafeArea: useSafeArea,
       builder: (context) {
-        return DismissibleDialogWithDelete(imageProvider,
-            immersive: immersive,
-            onPageChanged: onPageChanged,
-            onViewerDismissed: onViewerDismissed,
-            useSafeArea: useSafeArea,
-            swipeDismissible: swipeDismissible,
-            doubleTapZoomable: doubleTapZoomable,
-            infinitelyScrollable: infinitelyScrollable,
-            backgroundColor: backgroundColor,
-            closeButtonColor: closeButtonColor,
-            closeButtonTooltip: closeButtonTooltip, onDelete: onDelete);
+        return DismissibleDialogWithDelete(
+          imageProvider,
+          immersive: immersive,
+          onPageChanged: onPageChanged,
+          onViewerDismissed: onViewerDismissed,
+          useSafeArea: useSafeArea,
+          swipeDismissible: swipeDismissible,
+          doubleTapZoomable: doubleTapZoomable,
+          infinitelyScrollable: infinitelyScrollable,
+          backgroundColor: backgroundColor,
+          closeButtonColor: closeButtonColor,
+          closeButtonTooltip: closeButtonTooltip,
+          onDelete: onDelete,
+        );
       });
 }
